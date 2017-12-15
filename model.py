@@ -17,13 +17,13 @@ class Recomendacao(Base):
     id = Column(Integer, primary_key=True)
     cliente = Column(String)
     produto = Column(String)
-    rank = Column(Integer)
+    ranking = Column(Integer)
     data_geracao = Column(Date)
     data_oferta = Column(Date)
 
-    def __init__(self, cliente, produto, rank, data_geracao, data_oferta):
+    def __init__(self, cliente, produto, ranking, data_geracao, data_oferta):
         self.cliente = cliente
         self.produto = produto
-        self.rank = rank
+        self.ranking = ranking
         self.data_geracao = data_geracao
         self.data_oferta = data_oferta

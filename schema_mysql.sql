@@ -19,4 +19,7 @@ INSERT INTO recomendacao (cliente, produto, rank, data_geracao) VALUES ('12345',
 INSERT INTO recomendacao (cliente, produto, rank, data_geracao) VALUES ('12345', 'prod2',2,'20171210');
 INSERT INTO recomendacao (cliente, produto, rank, data_geracao) VALUES ('12345', 'prod3',3,'20171210');
 
+INSERT INTO recomendacao (cliente, produto, rank, data_geracao) VALUES ('12345', 'prod4',1,'20171214');
+INSERT INTO recomendacao (cliente, produto, rank, data_geracao) VALUES ('12345', 'prod5',2,'20171214');
+
 select * from recomendacao;

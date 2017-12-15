@@ -36,8 +36,8 @@ app.config.update(dict(
         DATABASE='db_recommender',
         DEBUG=True,
         SECRET_KEY='_5#y2L"F4Q8z\n\xec]/A0Zr98j/3yX R~XHH!jmN]LWX/,?RT',
-        USERNAME='admin',
-        PASSWORD='admin'
+        USERNAME='postgres',
+        PASSWORD='postgres'
     ))
 
 #app.config.from_envvar('FLASKR_SETTINGS', silent=True)
@@ -45,7 +45,10 @@ app.config.update(dict(
 # set the secret key.  keep this really secret:
 app.secret_key = app.config.get('SECRET_KEY')
 
-SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://'+app.config.get('USERNAME')+':'+app.config.get('PASSWORD')+'@localhost:3306/'+app.config.get('DATABASE')
+# Conn string for Mysql
+#SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://'+app.config.get('USERNAME')+':'+app.config.get('PASSWORD')+'@localhost:3306/'+app.config.get('DATABASE')
+# Conn string for postgresql
+SQLALCHEMY_DATABASE_URI = 'postgres://'+app.config.get('USERNAME')+':'+app.config.get('PASSWORD')+'@localhost:5432/'+app.config.get('DATABASE')
 
 #######################################
 #####                             #####
@@ -178,25 +181,9 @@ def logout():
     return redirect(url_for('accueil'))
 
 
-
-
-
-
-
-def get_labels(table):
-    columns = []
-    columnsStr = ''
-    for i, key in enumerate(table.c.keys()):
-        columns.append(' '.join(key.split('_')).title())
-        columnsStr += key
-        if i != len(table.c.keys()) -1:
-            columnsStr += ', '
-    columns = tuple(columns)
-    return columns
-
 #######################################
 #####                             #####
-#####   READ section              #####
+#####   API  section              #####
 #####                             #####
 #######################################
 
@@ -214,7 +201,7 @@ def get_recommendation(user):
         #TODO: if len(result >= 1):
         produtos = dict()
         for r in result:
-            produtos[r.produto] = r.rank
+            produtos[r.produto] = r.ranking
         serialized = dict()
         serialized['cliente'] = user
         serialized['produtos'] = produtos
