@@ -16,6 +16,7 @@ API for recommender system.
 ### Library
 - conda install flask
 - conda install sqlalchemy
+- conda install psycopg2
 - conda install -c anaconda passlib
 
 ### Create database (Postgresql version)
