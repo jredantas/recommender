@@ -40,4 +40,4 @@ Run from the application path:
 - flask run
 
 ## Available methods:
-- GET http://<localhost:5000>/api/v1.0/recommendation/<user>
+- GET http://localhost:5000/api/v1.0/recommendation/{user}
