@@ -10,8 +10,8 @@ API for recommender system.
 - Nginx
 
 ### Create environment
-- conda create -n webenv python=3.6
-- source activate webenv
+- '''conda create -n webenv python=3.6'''
+- '''source activate webenv'''
 
 ### Library
 - conda install flask
